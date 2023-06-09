@@ -21,7 +21,7 @@
             $dato_encriptado = mysqli_real_escape_string($conectar, $dta['dato_encriptado']);
             $escaped_value = mysqli_real_escape_string($conectar, $dta['dato_encriptado']);
             $rol = mysqli_real_escape_string($conectar, $dta['rol']);
-            $type = mysqli_real_escape_string($conectar, $dta['type']);
+            $type = mysqli_real_escape_string($conectar, $dta['subscription']);
             $code = mysqli_real_escape_string($conectar, $dta['code']);
             $dato_encriptado1 = mysqli_real_escape_string($conectar, $dta['dato_encriptado1']);
             $primeros_ocho = mysqli_real_escape_string($conectar, $dta['primeros_ocho']);
@@ -57,7 +57,7 @@
                     if (strpos($user, " ") === false && strlen($user) < 13 && preg_match('/^[^@#%&,:ñÑ]+$/', $user)) {
                                   
         
-                        if (preg_match('/^(?=.*\d)(?=.*[A-Z])(?=.*[a-z])(?=.*[^\w\d\s:])([^\s]){8,}$/', $pass) && strlen($user) > 4 && $pass==$pass1)  {
+                        if (preg_match('/^(?=.*\d)(?=.*[A-Z])(?=.*[a-z])(?=.*[^\w\d\s:])([^\s]){8,}$/', $dato_encriptado) && strlen($user) > 4 && $dato_encriptado==$dato_encriptado)  {
                             $userm=$user."@lugma.com";
                             $query= mysqli_query($conectar,"INSERT INTO users (username,name,last_name,contact,keyword,user_id,mail) VALUES ('$user','$name','$last_name','$contact','$dato_encriptado','$primeros_ocho','$userm')");
                                     

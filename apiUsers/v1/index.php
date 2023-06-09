@@ -9,22 +9,23 @@ require_once 'database/db_users.php';
 Flight::route('POST /post', function () {
    
 $dta = [
-        'user' => Flight::request()->data->sdate,
-        'name' => Flight::request()->data->value,
-        'last_name' => Flight::request()->data->user,
-        'contact' => Flight::request()->data->sdate,
-        'pass' => Flight::request()->data->value,
-        'pass1' => Flight::request()->data->user,
-        'rol' => Flight::request()->data->sdate,
-        'type' => Flight::request()->data->value,
-        'code' => Flight::request()->data->user,
-        'word' => Flight::request()->data->sdate
+        'user' => Flight::request()->data->user,
+        'name' => Flight::request()->data->name,
+        'last_name' => Flight::request()->data->last_name,
+        'contact' => Flight::request()->data->contact,
+        'pass' => Flight::request()->data->pass,
+        'pass1' => Flight::request()->data->pass1,
+        'rol' => Flight::request()->data->rol,
+        'subscription' => Flight::request()->data->subscription,
+        'code' => Flight::request()->data->code,
+        'word' => Flight::request()->data->word
     ];
 
         require_once('../../apiUsers/v1/controller/users/post_functions.php');
         
             $post_users = new post_functions();
             echo $post_users->post_users($dta);
+           // echo json_encode($dta);
      
 
 });
