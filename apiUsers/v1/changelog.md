@@ -1,5 +1,5 @@
 # Changelog
 
-## [0.1.0-alpha] - 2023-05-24
-- ENDPOINS GET / POST 
+## [0.1.1-alpha] - 2023-06-09
+- Hotfix en endpoint postUsers 
 
