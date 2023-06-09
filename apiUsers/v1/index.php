@@ -21,29 +21,11 @@ $dta = [
         'word' => Flight::request()->data->sdate
     ];
 
-    $headers = getallheaders();
-
-    // Verificar si el encabezado del API-Key está presente
-    if (isset($headers['API-Key'])) {
-        $apiKey = $headers['API-Key'];
-
         require_once('../../apiUsers/v1/controller/users/post_functions.php');
-        require_once('../../apiUsers/v1/controller/auth/auth_code.php');
-    
-        $verify_code = new authenticator();
-        $code_verification = $verify_code->auth_code($apiKey);
-
-        if ($code_verification == "0") {
-            echo "unauthorized";
-        } else {
+        
             $post_users = new post_functions();
             echo $post_users->post_users($dta);
-        }
-    } else {
-        // Manejar el caso cuando el encabezado del API-Key no está presente
-        // Por ejemplo, puedes devolver un error o asignar un valor predeterminado al API-Key
-        echo "api-key not found";
-    }
+     
 
 });
 
