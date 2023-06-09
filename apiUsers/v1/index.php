@@ -216,6 +216,10 @@ $dato_encriptado = $encriptar($pass);
         $suma=  $character->counter;
         $us= $character->user;
         $suma1=$suma+1;
+
+
+        if($suma1>=3){
+
         $query= mysqli_query($conectar,"UPDATE users SET session_counter='$suma1' WHERE username='$user1'");
          
   
@@ -267,6 +271,9 @@ $dato_encriptado = $encriptar($pass);
    
    
     }
+}else{
+    echo "false";
+}
 });
 
 
