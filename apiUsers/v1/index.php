@@ -75,9 +75,17 @@ $dato_encriptado = $encriptar($word);
           if  (preg_match('/^(?=.*\d)(?=.*[A-Z])(?=.*[a-z])(?=.*[^\w\d\s:])([^\s]){8,}$/', $word) && strlen($word) > 7)  
                     {
             $query= mysqli_query($conectar,"INSERT INTO subscriptionlist (sub_id,mail,secret_word,sub_type) VALUES ('$primeros_ocho','$mail','$dato_encriptado','$type')");
-       
+            ini_set( 'display_errors', 1 );
+            error_reporting( E_ALL );
+            $from = "lugma@lugma.tech";
+            $to = $mail;
+            $subject = "Código de suscripción a LUGMA";
+            $message = "TU CÓDIGO DE SUSCRIPCIÓN ES: ".$primeros_ocho.".<br>Ingresa este código cuando crees tu usuario, y recuerda tu palabra secreta...";
+            $headers = "From:" . $from;
+            mail($to,$subject,$message, $headers);
+            echo "The email message was sent.";
     
-    echo $primeros_ocho;
+    echo "Tu código de suscripción fue enviado al correo adjunto: ".$mail;
                     }else{
                         echo "Palabra clave muy corta o no contiene caracteres mayusculas minusculas o simbolos minumo 8 caracteres";
                     }
