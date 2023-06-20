@@ -30,6 +30,53 @@ $dta = [
 
 });
 
+
+Flight::route('POST /postInvite', function () {
+   
+    $dta = [
+            'user' => Flight::request()->data->user,
+            'name' => Flight::request()->data->name,
+            'last_name' => Flight::request()->data->last_name,
+            'contact' => Flight::request()->data->contact,
+            'pass' => Flight::request()->data->pass,
+            'pass1' => Flight::request()->data->pass1,
+            'rol' => Flight::request()->data->rol,
+            'profile_id' => Flight::request()->data->profile_id
+
+        ];
+    
+            require_once('../../apiUsers/v1/controller/users/post_functions.php');
+            
+                $post_users = new post_functions();
+                echo $post_users->post_users_invite($dta);
+               // echo json_encode($dta);
+         
+    
+    });
+    Flight::route('POST /postInvitePost', function () {
+   
+        $dta = [
+                'user' => Flight::request()->data->user,
+                'name' => Flight::request()->data->name,
+                'last_name' => Flight::request()->data->last_name,
+                'contact' => Flight::request()->data->contact,
+                'pass' => Flight::request()->data->pass,
+                'pass1' => Flight::request()->data->pass1,
+                'rol' => Flight::request()->data->rol,
+                'profile_id' => Flight::request()->data->profile_id,
+                'resource_id' => Flight::request()->data->resource_id
+    
+            ];
+        
+                require_once('../../apiUsers/v1/controller/users/post_functions.php');
+                
+                    $post_users = new post_functions();
+                    echo $post_users->post_users_invite_post($dta);
+                   // echo json_encode($dta);
+             
+        
+        });
+    
 Flight::route('POST /postSub', function () {
     $conectar=conn();
 
